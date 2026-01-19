@@ -41,6 +41,7 @@ public class PriceJpaEntity {
 
     @Column(name = "currency", nullable = false, length = 3)
     private String currency;
+    
     protected PriceJpaEntity() {}
 
     // getters/setters 

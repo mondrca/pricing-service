@@ -69,7 +69,7 @@ GET http://localhost:8080/api/v1/prices/applicable
 Ejemplo de petición:
 
 ```bash
-curl "http://localhost:8080/api/v1/prices/applicable?date=2020-06-14T10:00:00&productId=35455&brandId=1"
+curl "http://localhost:8080/api/v1/prices/applicable?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1"
 ```
 <img width="1868" height="470" alt="image" src="https://github.com/user-attachments/assets/895ecd48-fd09-480a-baba-5810a8ed3c2a" />
 
@@ -108,16 +108,16 @@ GET /api/v1/prices/applicable
 
 **Parámetros**
 
-| Parámetro | Tipo              | Descripción                |
-| --------- | ----------------- | -------------------------- |
-| date      | ISO-8601 datetime | Fecha de aplicación        |
-| productId | Long              | Identificador del producto |
-| brandId   | Long              | Identificador de la cadena |
+| Parámetro       | Tipo              | Descripción                |
+| ---------       | ----------------- | -------------------------- |
+| applicationDate | ISO-8601 datetime | Fecha de aplicación        |
+| productId       | Long              | Identificador del producto |
+| brandId         | Long              | Identificador de la cadena |
 
 **Ejemplo**
 
 ```bash
-curl "http://localhost:8080/api/v1/prices/applicable?date=2020-06-14T16:00:00&productId=35455&brandId=1"
+curl "http://localhost:8080/api/v1/prices/applicable?applicationDate=2020-06-14T16:00:00&productId=35455&brandId=1"
 ```
 
 **Respuesta**

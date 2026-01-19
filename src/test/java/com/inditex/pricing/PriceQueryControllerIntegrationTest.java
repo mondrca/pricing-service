@@ -20,7 +20,7 @@ class PriceQueryControllerIntegrationTest {
     @Test
     void test1() throws Exception {
         mockMvc.perform(get("/api/v1/prices/applicable")
-                        .param("date", "2020-06-14T10:00:00")
+                        .param("applicationDate", "2020-06-14T10:00:00")
                         .param("productId", "35455")
                         .param("brandId", "1"))
                 .andExpect(status().isOk())
@@ -34,7 +34,7 @@ class PriceQueryControllerIntegrationTest {
     @Test
     void test2() throws Exception {
         mockMvc.perform(get("/api/v1/prices/applicable")
-                        .param("date", "2020-06-14T16:00:00")
+                        .param("applicationDate", "2020-06-14T16:00:00")
                         .param("productId", "35455")
                         .param("brandId", "1"))
                 .andExpect(status().isOk())
@@ -46,7 +46,7 @@ class PriceQueryControllerIntegrationTest {
     @Test
     void test3() throws Exception {
         mockMvc.perform(get("/api/v1/prices/applicable")
-                        .param("date", "2020-06-14T21:00:00")
+                        .param("applicationDate", "2020-06-14T21:00:00")
                         .param("productId", "35455")
                         .param("brandId", "1"))
                 .andExpect(status().isOk())
@@ -58,7 +58,7 @@ class PriceQueryControllerIntegrationTest {
     @Test
     void test4() throws Exception {
         mockMvc.perform(get("/api/v1/prices/applicable")
-                        .param("date", "2020-06-15T10:00:00")
+                        .param("applicationDate", "2020-06-15T10:00:00")
                         .param("productId", "35455")
                         .param("brandId", "1"))
                 .andExpect(status().isOk())
@@ -70,7 +70,7 @@ class PriceQueryControllerIntegrationTest {
     @Test
     void test5() throws Exception {
         mockMvc.perform(get("/api/v1/prices/applicable")
-                        .param("date", "2020-06-16T21:00:00")
+                        .param("applicationDate", "2020-06-16T21:00:00")
                         .param("productId", "35455")
                         .param("brandId", "1"))
                 .andExpect(status().isOk())
