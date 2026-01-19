@@ -5,18 +5,17 @@ import com.inditex.pricing.domain.model.Price;
 
 public final class PriceJpaMapper {
 
-    private PriceJpaMapper() {}
+  private PriceJpaMapper() {}
 
-    public static Price toDomain(PriceJpaEntity e) {
-        return new Price(
-                e.getProductId(),
-                e.getBrandId(),
-                e.getPriceList(),
-                e.getPriority(),
-                e.getStartDate(),
-                e.getEndDate(),
-                e.getPrice(),
-                e.getCurrency()
-        );
-    }
+  public static Price toDomain(PriceJpaEntity e) {
+    return new Price(
+        e.getProductId(),
+        e.getBrandId(),
+        e.getPriceList(),
+        e.getPriority(),
+        e.getStartDate(),
+        e.getEndDate(),
+        e.getPrice(),
+        e.getCurrency());
+  }
 }
