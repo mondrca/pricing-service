@@ -19,6 +19,7 @@ public class GetApplicablePriceService implements GetApplicablePriceUseCase {
 
     @Override
     public Optional<Price> getApplicablePrice(LocalDateTime applicationDate, Long productId, Long brandId) {
-        return repositoryPort.findApplicable(applicationDate, productId, brandId);
+        return repositoryPort.findApplicableWithHighestPriority(applicationDate, productId, brandId);
+
     }
 }

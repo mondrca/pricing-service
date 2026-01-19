@@ -18,11 +18,12 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
     }
 
     @Override
-    public Optional<Price> findApplicable(LocalDateTime applicationDate, Long productId, Long brandId) {
+    public Optional<Price> findApplicableWithHighestPriority(LocalDateTime applicationDate, Long productId, Long brandId) {
         return springRepo
-                .findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByPriorityDesc(
-                        brandId, productId, applicationDate, applicationDate
-                )
+                .findApplicableOrderedByPriorityDesc(applicationDate, productId, brandId)
+                .stream()
+                .findFirst()
                 .map(PriceJpaMapper::toDomain);
     }
+
 }
