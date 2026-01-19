@@ -21,7 +21,8 @@ application
  ├── port.out            → Puertos de persistencia
  └── service             → Implementación de casos de uso
 adapter.in.web           → REST Controllers + DTOs
-adapter.out.persistence  → JPA + H2 + Repositorios
+adapter.out.persistence  → Implementación JPA del puerto de persistencia (H2 en memoria)
+
 ```
 <img width="371" height="665" alt="image" src="https://github.com/user-attachments/assets/50a856e2-1a2f-4a04-9c80-2fec3f0e4ce9" />
 
@@ -138,8 +139,21 @@ curl "http://localhost:8080/api/v1/prices/applicable?applicationDate=2020-06-14T
 
 * `200 OK` → Precio encontrado
 * `404 Not Found` → No existe precio aplicable
+
+
 <img width="814" height="232" alt="image" src="https://github.com/user-attachments/assets/dbe382a2-668b-487d-8500-de5f923ce050" />
 
+Las respuestas de error siguen el estándar `ProblemDetail` (RFC 7807), devolviendo información consistente para errores de validación y recursos no encontrados.
+
+```
+{
+  "type": "about:blank",
+  "title": "Price not found",
+  "status": 404,
+  "detail": "No applicable price found for productId=99999, brandId=1 at 2020-06-14T10:00",
+  "path": "/api/v1/prices/applicable"
+}
+```
 ---
 
 ## Eficiencia de la consulta
@@ -150,15 +164,26 @@ La consulta a base de datos:
 * Ordena por **prioridad descendente**
 * Devuelve **un único resultado**
 
-Esto se implementa mediante un método derivado de Spring Data JPA:
+Esto se implementa mediante una consulta **JPQL explícita** en el adaptador de persistencia:
 
-```java
-findFirstByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByPriorityDesc(...)
+
+
+```@Query("""
+    SELECT p
+    FROM PriceJpaEntity p
+    WHERE p.brandId = :brandId
+      AND p.productId = :productId
+      AND :applicationDate BETWEEN p.startDate AND p.endDate
+    ORDER BY p.priority DESC
+""")
+List<PriceJpaEntity> findApplicableOrderedByPriorityDesc(...);
 ```
 
-✔️ Sin filtrado en memoria
-✔️ Un único acceso a base de datos
-✔️ Óptimo y escalable
+✔️ Un único acceso a base de datos  
+✔️ Sin filtrado en memoria  
+✔️ Intención de negocio explícita  
+✔️ Fácil de mantener y testear
+
 
 ---
 
