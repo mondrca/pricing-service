@@ -24,7 +24,8 @@ adapter.in.web           → REST Controllers + DTOs
 adapter.out.persistence  → Implementación JPA del puerto de persistencia (H2 en memoria)
 
 ```
-<img width="371" height="665" alt="image" src="https://github.com/user-attachments/assets/50a856e2-1a2f-4a04-9c80-2fec3f0e4ce9" />
+<img width="571" height="942" alt="image" src="https://github.com/user-attachments/assets/7d32f1ad-9cc8-4dfd-8e79-807dafb46d2f" />
+
 
 ### Beneficios
 
@@ -72,7 +73,8 @@ Ejemplo de petición:
 ```bash
 curl "http://localhost:8080/api/v1/prices/applicable?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1"
 ```
-<img width="1868" height="470" alt="image" src="https://github.com/user-attachments/assets/895ecd48-fd09-480a-baba-5810a8ed3c2a" />
+<img width="1478" height="368" alt="image" src="https://github.com/user-attachments/assets/30b11f98-c294-488e-ab1c-0da14e38125d" />
+
 
 
 ---
@@ -141,7 +143,8 @@ curl "http://localhost:8080/api/v1/prices/applicable?applicationDate=2020-06-14T
 * `404 Not Found` → No existe precio aplicable
 
 
-<img width="814" height="232" alt="image" src="https://github.com/user-attachments/assets/dbe382a2-668b-487d-8500-de5f923ce050" />
+<img width="893" height="219" alt="image" src="https://github.com/user-attachments/assets/1143dbb9-d934-4864-9f6e-3592b308b16d" />
+
 
 Las respuestas de error siguen el estándar `ProblemDetail` (RFC 7807), devolviendo información consistente para errores de validación y recursos no encontrados.
 
@@ -223,7 +226,8 @@ Tras ejecutar:
 ```bash
 mvn clean test
 ```
-<img width="1692" height="281" alt="image" src="https://github.com/user-attachments/assets/74965c94-8839-401d-b58e-3b8979bf2165" />
+<img width="2334" height="763" alt="image" src="https://github.com/user-attachments/assets/af31c0d9-499a-4275-afe4-685c69d7ff9f" />
+
 
 Se genera el reporte en:
 
